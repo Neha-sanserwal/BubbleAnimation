@@ -1,0 +1,38 @@
+<!--Animation of bubbles using d3js and html -->
+<!doctype html>
+<html>
+<head>
+   <style>
+      body{
+          height: 100vh;
+      }
+   </style>
+   <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<script>
+	var element = d3.select('body').node();
+    x = element.getBoundingClientRect().width;
+    y = element.getBoundingClientRect().height;
+	var svg = d3.select('body') // creating svg
+   		        .append("svg")
+   		        .attr("width" ,x)
+                .attr("height" , y)
+                .attr('border' , 1);
+    svg.on("mousemove" ,function(){ 
+        position=d3.mouse(this);  
+        svg.append("circle")     // creating svg of typr circle
+            .attr("fill", "white")
+            .attr("stroke" , 'blue')
+            .attr("stroke-width" ,1).transition() // animation 
+            .ease(d3.easeCircle)
+            .attr("cx", position[0]+Math.floor(Math.random()*401)-100)
+            .attr("cy", position[1]+Math.floor(Math.random()*401)-100)
+            .attr("r" , Math.floor(Math.random()*40))
+            .duration(500)
+            .delay(100)
+            .remove();        
+    })
+</script>
+</body>
+</html>
