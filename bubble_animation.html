@@ -29,7 +29,7 @@
         .attr("height", y)
         .attr("border", 1);
       svg.on("mousemove", function() {
-        let colorIndex = Math.floor(Math.random() * randomColors.length); //random creating number for index
+        let colorIndex = Math.floor(Math.random() * randomColors.length); //randomly creating number for index
         position = d3.mouse(this);
         svg
           .append("circle") // creating svg of type circle
